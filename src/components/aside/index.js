@@ -2,14 +2,20 @@ import React from "react";
 import { useEffect } from "react";
 import {
   Aside,
-  ContainerAlbum,
   ButtonLogin,
   InputLogin,
+  ContainerPosts,
   TitlePrincipal,
   ContainerEditUser,
 } from "./styles";
 import { useForm } from "react-hook-form";
-import { ImgProduct } from "../user/styles";
+import {
+  TitleProduct,
+  ButtonProducts,
+  ImgProduct,
+  PriceProduct,
+  Containercards,
+} from "../user/styles";
 import { PutUsers } from "../redux/actions/UsersActions";
 import { useSelector, useDispatch } from "react-redux";
 export default function Basket() {
@@ -28,13 +34,14 @@ export default function Basket() {
   const postsuser = useSelector((state) => {
     return state.users.posts;
   });
-  const home = useSelector((state) => {
-    return state.users.home;
-  });
   const dispatch = useDispatch();
   const userinfo = useSelector((state) => {
     return state.users.user;
   });
+  const home = useSelector((state) => {
+    return state.users.home;
+  });
+
   const albums = useSelector((state) => {
     return state.users.albums;
   });
@@ -59,7 +66,6 @@ export default function Basket() {
 
     await dispatch(PutUsers(userinfo.id, json));
   };
-
   return (
     <Aside>
       <ContainerEditUser>
@@ -87,21 +93,17 @@ export default function Basket() {
 
               <ButtonLogin type="submit">GUARDAR</ButtonLogin>
             </form>
-            <div></div>
+            <div>
+              <ContainerPosts>
+                {postsuser && postsuser.map((post) => <li>{post.title}</li>)}
+              </ContainerPosts>
+            </div>
           </>
         ) : (
-        
-          <ContainerAlbum>
-          {  albums.map((album) => (
-              <li>
-              {album.title}
-              </li>
-              ))} 
-            </ContainerAlbum>
-         
-        )
-        
-        }
+          <ContainerPosts>
+            {albums && albums.map((album) => <li>{album.title}</li>)}
+          </ContainerPosts>
+        )}
       </ContainerEditUser>
     </Aside>
   );

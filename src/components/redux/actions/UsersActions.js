@@ -27,7 +27,7 @@ import {
     };
   };
   export const fetchGetAlbumsSuccess = (result) => {
-debugger;
+ 
     return {
       type: GET_ALBUMS_BY_ID_SUCCESS,
       value: result.data,
@@ -59,7 +59,7 @@ debugger;
     };
   };
   export const fetchGetPostsSuccess = (result) => {
-debugger;
+ 
     return {
       type: GET_POSTS_BY_ID_SUCCESS,
       value: result.data,
