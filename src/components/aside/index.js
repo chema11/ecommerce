@@ -2,19 +2,14 @@ import React from "react";
 import { useEffect } from "react";
 import {
   Aside,
+  ContainerAlbum,
   ButtonLogin,
   InputLogin,
   TitlePrincipal,
   ContainerEditUser,
 } from "./styles";
 import { useForm } from "react-hook-form";
-import {
-  TitleProduct,
-  ButtonProducts,
-  ImgProduct,
-  PriceProduct,
-  Containercards,
-} from "../user/styles";
+import { ImgProduct } from "../user/styles";
 import { PutUsers } from "../redux/actions/UsersActions";
 import { useSelector, useDispatch } from "react-redux";
 export default function Basket() {
@@ -33,9 +28,15 @@ export default function Basket() {
   const postsuser = useSelector((state) => {
     return state.users.posts;
   });
+  const home = useSelector((state) => {
+    return state.users.home;
+  });
   const dispatch = useDispatch();
   const userinfo = useSelector((state) => {
     return state.users.user;
+  });
+  const albums = useSelector((state) => {
+    return state.users.albums;
   });
   useEffect(() => {
     if (userinfo) {
@@ -58,35 +59,49 @@ export default function Basket() {
 
     await dispatch(PutUsers(userinfo.id, json));
   };
+
   return (
     <Aside>
       <ContainerEditUser>
-        <TitlePrincipal>Usuario</TitlePrincipal>
+        {home === true ? (
+          <>
+            <TitlePrincipal>Usuario</TitlePrincipal>
 
-        <ImgProduct src={userinfo.avatar} alt={userinfo.first_name} />
-        <form onSubmit={handleSubmit(onSubmit)}>
-          <InputLogin
-            type="text"
-            name="name"
-            id="name"
-            placeholder="Nombre y Apellido paterno"
-            style={{ border: errors.name ? "1px solid red" : "" }}
-            {...register("name", { required: true })}
-          />
-          <InputLogin
-            type="email"
-            placeholder="email"
-            name="email"
-            style={{ border: errors.email ? "1px solid red" : "" }}
-            {...register("email", { required: true })}
-          />
+            <ImgProduct src={userinfo.avatar} alt={userinfo.first_name} />
+            <form onSubmit={handleSubmit(onSubmit)}>
+              <InputLogin
+                type="text"
+                name="name"
+                id="name"
+                placeholder="Nombre y Apellido paterno"
+                style={{ border: errors.name ? "1px solid red" : "" }}
+                {...register("name", { required: true })}
+              />
+              <InputLogin
+                type="email"
+                placeholder="email"
+                name="email"
+                style={{ border: errors.email ? "1px solid red" : "" }}
+                {...register("email", { required: true })}
+              />
 
-          <ButtonLogin type="submit">GUARDAR</ButtonLogin>
-        </form>
-        <div>
-      
-       
-        </div>
+              <ButtonLogin type="submit">GUARDAR</ButtonLogin>
+            </form>
+            <div></div>
+          </>
+        ) : (
+        
+          <ContainerAlbum>
+          {  albums.map((album) => (
+              <li>
+              {album.title}
+              </li>
+              ))} 
+            </ContainerAlbum>
+         
+        )
+        
+        }
       </ContainerEditUser>
     </Aside>
   );
