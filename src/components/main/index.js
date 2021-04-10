@@ -20,8 +20,8 @@ export default function Main() {
 
   return (
    
-    <Container  onClick={() =>   dispatch(CloseSidebar( ))}>
-      <ContainerPrincipal  theme={sidebar===true?widthaside:widthFull }>
+    <Container  >
+      <ContainerPrincipal onClick={() =>   dispatch(CloseSidebar( ))} theme={sidebar===true?widthaside:widthFull }>
 
       <TitlePrincipal>Usuarios</TitlePrincipal>
       <Row>
