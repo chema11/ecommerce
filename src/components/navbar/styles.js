@@ -8,7 +8,10 @@ export const Nav = styled.header`
   background-color: #004bb1;
   padding: 0 50px 0 30px;
   justify-content: space-between;
-  position: sticky;
+ 
+  @media (max-width: 518px) {
+    padding: 0 10px 0 10px;
+   }
 `;
 
 export const Count = styled.span`

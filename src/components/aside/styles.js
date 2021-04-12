@@ -9,6 +9,9 @@ export const Aside = styled.aside`
   display: flex;
   align-items: center;
   flex-direction: column;
+  @media (max-width: 518px) {
+    margin-left: 0.5rem;
+   }
 `;
 
 export const TitlePrincipal = styled.h2`

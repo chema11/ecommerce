@@ -10,7 +10,7 @@ export const Container = styled.main`
   flex: 1;
   display: flex;
   align-items: stretch;
-  @media (max-width: 7518px) {
+  @media (max-width: 518px) {
    flex-direction:column-reverse
   }
 `;

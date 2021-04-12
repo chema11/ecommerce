@@ -55,6 +55,7 @@ export const Containercards = styled.div`
 
   @media (max-width: 715px) {
     width: 10rem;
+    margin:auto;
   }
 `;
 
