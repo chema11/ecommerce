@@ -24,6 +24,9 @@ export const ContainerEditUser = styled.div`
   align-items: center;
   flex-direction: column;
   margin: 0 auto;
+  @media (max-width: 715px) {
+    width: 15rem;
+  }
 `;
 export const InputLogin = styled.input`
 
@@ -43,7 +46,10 @@ border-radius:20px;
 background-color: fade(#f53135, 40%);
 background: fade(#f53135, 40%);
 color:  #1045F4;
- 
+@media (max-width: 715px) {
+  width: 15rem;
+  width: 200px;
+}
  
 
 `;
@@ -149,5 +155,13 @@ export const ButtonLogin = styled.button`
     transform: translate3d(0, 0, -1em);
 
     box-shadow: 0 0 0 2px rgb(121, 186, 156), 0 0.25em 0 0 rgb(121, 186, 156);
+  }
+
+  @media (max-width: 715px) {
+    width: 240px;
+    &::before {
+       
+      width: 235px;
+    }
   }
 `;

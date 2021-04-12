@@ -52,6 +52,10 @@ export const Containercards = styled.div`
     border-color: darken(#ffc107, 0%);
     transform: perspective(0em) rotateX(0deg) rotateY(0deg) rotateZ(0deg);
   }
+
+  @media (max-width: 715px) {
+    width: 10rem;
+  }
 `;
 
 export const Containercard = styled.p`
