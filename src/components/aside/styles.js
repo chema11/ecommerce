@@ -59,6 +59,7 @@ color:  #1045F4;
 export const ContainerPosts = styled.ol`
 counter-reset: gradient-counter;
 list-style: none;
+width:15rem;
 margin: 1.75rem 0;
 padding: 1rem 2rem;
 > li {
